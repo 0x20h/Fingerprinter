@@ -57,7 +57,10 @@ public:
    std::string postRawObj( const std::string& url,
                            const char* pData, size_t dataSize, const std::string& dataName = "",
                            bool encode = false );
-
+   /**
+	* urlencode the given parameter
+	*/
+   std::string encode( const std::string& param);
 private:
 
    static size_t httpFetch(void* ptr, size_t size, size_t nmemb, void *pData);

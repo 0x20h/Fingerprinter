@@ -84,6 +84,15 @@ string HTTPClient::postRawObj( const std::string& url,
 
 // -----------------------------------------------------------------------------
 
+string HTTPClient::encode( const std::string& param ) {
+	char* url_encoded = curl_easy_escape(m_pCurlHandle, param.c_str(), 0);
+	string param_encoded(url_encoded);
+	curl_free(url_encoded);
+	return param_encoded;
+}
+
+// -----------------------------------------------------------------------------
+
 string HTTPClient::postRawObj( const std::string& url, 
                                const map<string, string>& urlParams, 
                                const char* pData, size_t dataSize,
